@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Amazin Shop — Demo Electronics</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__left">
+        <a href="#" class="logo" aria-label="Amazin Home">
+          <span class="logo__mark">a</span>
+          <span class="logo__text">mazin<span class="logo__dot">.shop</span></span>
+        </a>
+        <nav class="nav" aria-label="Product categories">
+          <ul id="category-list" class="nav__list"><!-- populated by JS --></ul>
+        </nav>
+      </div>
+      <div class="header__center">
+        <form id="search-form" class="search" role="search" aria-label="Sitewide">
+          <input id="search-input" class="search__input" type="search" placeholder="Search electronics, brands, and more" autocomplete="off" />
+          <button class="search__btn" type="submit" aria-label="Search">🔎</button>
+        </form>
+      </div>
+      <div class="header__right">
+        <button id="wishlist-btn" class="icon-btn" aria-label="Wishlist">
+          <span class="icon">♡</span>
+          <span id="wishlist-count" class="badge" aria-hidden="true">0</span>
+        </button>
+        <button id="cart-btn" class="icon-btn" aria-label="Shopping cart">
+          <span class="icon">🛒</span>
+          <span id="cart-count" class="badge" aria-hidden="true">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="notice">Free shipping on orders over $25 • Deals updated daily</section>
+      <section id="results-meta" class="results-meta" aria-live="polite"></section>
+      <section id="product-grid" class="product-grid" aria-label="Products"></section>
+    </main>
+
+    <!-- Cart Drawer -->
+    <div id="cart-overlay" class="overlay hidden" tabindex="-1"></div>
+    <aside id="cart-drawer" class="cart" aria-hidden="true" aria-labelledby="cart-title">
+      <header class="cart__header">
+        <h2 id="cart-title">Your Cart</h2>
+        <button id="cart-close" class="icon-btn" aria-label="Close cart">✕</button>
+      </header>
+      <div id="cart-items" class="cart__items" role="list"></div>
+      <footer class="cart__footer">
+        <div class="cart__totals">
+          <div class="row"><span>Subtotal</span><span id="cart-subtotal">$0.00</span></div>
+          <div class="row"><span>Estimated tax</span><span id="cart-tax">$0.00</span></div>
+          <div class="row total"><span>Total</span><span id="cart-total">$0.00</span></div>
+        </div>
+        <button class="btn btn--primary" id="checkout-btn" type="button">Proceed to Checkout</button>
+      </footer>
+    </aside>
+
+    <!-- Quick View Modal -->
+    <div id="modal-overlay" class="overlay hidden" tabindex="-1"></div>
+    <section id="quick-view" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="quick-title">
+      <button id="modal-close" class="icon-btn modal__close" aria-label="Close quick view">✕</button>
+      <div id="modal-content" class="modal__content"><!-- populated by JS --></div>
+    </section>
+
+    <script src="app.js" defer></script>
+  </body>
+  </html>
