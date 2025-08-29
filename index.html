@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vivo — Innovation Meets Elegance</title>
+    <meta name="description" content="Explore Vivo's latest flagship phones. Innovation Meets Elegance. Shop now or watch the demo. Zeiss camera, 120W charging, and more." />
+    <link rel="icon" href="https://wallpapers.com/images/hd/metallic-vivo-logo-dark-y4ti2whe3w5sk4rj.jpg" />
+    <style>
+      :root {
+        --vivo-blue-1: #0f6fe8;
+        --vivo-blue-2: #00b2ff;
+        --vivo-indigo: #4b47ff;
+        --vivo-dark: #0b0f1a;
+        --vivo-light: #f5fbff;
+        --text-on-dark: #e8f2ff;
+        --glass: rgba(255, 255, 255, 0.12);
+        --glass-strong: rgba(255, 255, 255, 0.22);
+        --accent: #19d1ff;
+        --success: #2ee6a6;
+        --warning: #ffd166;
+      }
+
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        color: var(--text-on-dark);
+        background: radial-gradient(1200px 800px at 20% 0%, rgba(25, 209, 255, 0.12), transparent 60%),
+                    radial-gradient(900px 600px at 80% 20%, rgba(75, 71, 255, 0.18), transparent 60%),
+                    linear-gradient(180deg, #061224 0%, #0a1a33 100%);
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; height: auto; display: block; }
+
+      .container {
+        width: min(1200px, 92vw);
+        margin: 0 auto;
+        text-align: center; /* Center all content per requirement */
+      }
+
+      /* Header */
+      header {
+        position: sticky; top: 0; z-index: 50;
+        background: rgba(6, 18, 36, 0.75);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .nav {
+        display: flex; align-items: center; justify-content: center;
+        gap: 18px; padding: 10px 0;
+      }
+      .nav img { width: 120px; height: auto; border-radius: 8px; }
+      .nav a { padding: 8px 12px; border-radius: 999px; transition: background .2s ease; font-weight: 500; }
+      .nav a:hover { background: rgba(255, 255, 255, 0.08); }
+
+      /* Hero */
+      .hero { position: relative; padding: 60px 0 40px; }
+      .hero h1 { font-size: clamp(2rem, 3.8vw + 1rem, 4rem); margin: 10px 0 0; letter-spacing: 0.5px; }
+      .tagline { font-size: clamp(1rem, 1.2vw + 0.6rem, 1.5rem); opacity: 0.92; margin: 10px 0 22px; }
+      .cta { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+      .btn { border: 0; cursor: pointer; padding: 12px 20px; border-radius: 999px; font-weight: 700; letter-spacing: .3px; }
+      .btn-primary { background: linear-gradient(135deg, var(--vivo-blue-1), var(--vivo-indigo)); color: white; box-shadow: 0 8px 24px rgba(15, 111, 232, .4); }
+      .btn-secondary { background: rgba(255,255,255,0.12); color: var(--text-on-dark); border: 1px solid rgba(255,255,255,0.18); }
+      .btn:hover { transform: translateY(-1px); }
+
+      .hero-visual {
+        margin-top: 26px; display: grid; grid-template-columns: 1fr; place-items: center; gap: 18px;
+      }
+      .hero-visual img { border-radius: 18px; box-shadow: 0 20px 50px rgba(0,0,0,.35); max-height: 60vh; object-fit: cover; }
+
+      /* Devices */
+      section { padding: 56px 0; }
+      .section-title { font-size: clamp(1.6rem, 2vw + 1rem, 2.4rem); margin-bottom: 8px; }
+      .section-sub { opacity: .85; margin-bottom: 26px; }
+
+      .cards { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; justify-items: center; }
+      .card {
+        grid-column: 1 / -1;
+        width: min(360px, 100%);
+        background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 18px;
+        padding: 16px; text-align: center;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      }
+      .card h3 { margin: 8px 0 4px; font-size: 1.2rem; }
+      .specs { list-style: none; padding: 0; margin: 10px 0 16px; opacity: .95; }
+      .specs li { margin: 6px 0; }
+      .price { font-weight: 800; color: var(--warning); margin-bottom: 10px; }
+
+      @media (min-width: 680px) {
+        .card { grid-column: span 4; }
+      }
+
+      /* Carousel */
+      .carousel {
+        position: relative; width: min(980px, 96%); margin: 0 auto;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 18px; overflow: hidden;
+      }
+      .carousel-track { display: flex; transition: transform .5s ease; }
+      .slide { min-width: 100%; display: grid; gap: 12px; align-items: center; justify-items: center; padding: 24px; }
+      .slide h4 { margin: 6px 0 2px; font-size: 1.3rem; }
+      .slide p { max-width: 56ch; margin: 0 auto; opacity: 0.95; }
+      .carousel-controls { position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-between; pointer-events: none; }
+      .carousel button { pointer-events: all; border: 0; background: var(--glass-strong); color: white; width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; margin: 0 8px; cursor: pointer; }
+      .dots { display: flex; gap: 6px; justify-content: center; padding: 10px 0 16px; }
+      .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.35); cursor: pointer; border: 0; }
+      .dot.active { background: var(--accent); }
+
+      /* Offers */
+      .offer {
+        background: linear-gradient(135deg, rgba(0, 178, 255, 0.25), rgba(75, 71, 255, 0.25));
+        border: 1px dashed rgba(255,255,255,0.35);
+        border-radius: 16px; padding: 18px; width: min(980px, 96%); margin: 0 auto;
+      }
+      .countdown { font-variant-numeric: tabular-nums; font-weight: 800; font-size: 1.3rem; color: var(--warning); }
+
+      /* Testimonials */
+      .testimonials { width: min(1000px, 96%); margin: 0 auto; }
+      .testimonial {
+        background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 16px; padding: 18px; margin: 10px 0;
+      }
+      .stars { color: #ffd166; letter-spacing: 2px; }
+
+      /* Contact */
+      form { width: min(720px, 96%); margin: 0 auto; text-align: center; }
+      .row { display: grid; grid-template-columns: 1fr; gap: 12px; }
+      @media (min-width: 640px) { .row.two { grid-template-columns: 1fr 1fr; } }
+      input, textarea {
+        width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.18);
+        background: rgba(255,255,255,0.08); color: #fff; outline: none;
+      }
+      textarea { min-height: 120px; resize: vertical; }
+      label { display: block; text-align: left; margin-bottom: 6px; opacity: .9; }
+
+      /* Footer */
+      footer { padding: 36px 0 26px; background: rgba(0,0,0,0.35); border-top: 1px solid rgba(255,255,255,0.12); }
+      .social { display: flex; gap: 14px; justify-content: center; }
+      .social a { padding: 10px 12px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); border-radius: 999px; }
+      .newsletter { display: grid; grid-template-columns: 1fr auto; gap: 10px; width: min(520px, 96%); margin: 16px auto; }
+      .copyright { opacity: 0.75; margin-top: 12px; font-size: .95rem; }
+
+      /* Subtle floating animation for hero images */
+      @keyframes floaty { from { transform: translateY(0); } 50% { transform: translateY(-6px); } to { transform: translateY(0); } }
+      .floaty { animation: floaty 6s ease-in-out infinite; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="container nav" aria-label="Primary">
+        <a href="#top" title="Vivo Home" style="display:flex;align-items:center;gap:10px">
+          <img src="https://wallpapers.com/images/hd/metallic-vivo-logo-dark-y4ti2whe3w5sk4rj.jpg" alt="Vivo logo" loading="lazy" />
+        </a>
+        <a href="#devices">Devices</a>
+        <a href="#features">Features</a>
+        <a href="#offers">Offers</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top" class="container">
+      <!-- Hero -->
+      <section class="hero" aria-labelledby="hero-title">
+        <h1 id="hero-title">Innovation Meets Elegance</h1>
+        <p class="tagline">Experience the new era of mobile excellence with Vivo.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#devices">Shop Now</a>
+          <a class="btn btn-secondary" href="#features">Watch Demo</a>
+        </div>
+        <div class="hero-visual">
+          <img class="floaty" src="https://in-exstatic-vivofs.vivo.com/gdHFRinHEMrj3yPG/1747038695532/5f3c0635fdd4f07b5bdbf752c2a56215.jpg" alt="Vivo flagship phone glamor shot" />
+        </div>
+      </section>
+
+      <!-- Devices -->
+      <section id="devices" aria-labelledby="devices-title">
+        <h2 class="section-title" id="devices-title">Flagship Devices</h2>
+        <p class="section-sub">Premium design, breakthrough performance, and pro-grade imaging.</p>
+        <div class="cards">
+          <article class="card" aria-label="Vivo X100 Pro">
+            <img src="https://in-exstatic-vivofs.vivo.com/gdHFRinHEMrj3yPG/1747038695532/5f3c0635fdd4f07b5bdbf752c2a56215.jpg" alt="Vivo X100 Pro front and back" loading="lazy" />
+            <h3>X100 Pro</h3>
+            <ul class="specs">
+              <li>Zeiss 1-inch Sensor, Night Portrait</li>
+              <li>6.78" AMOLED 120Hz</li>
+              <li>Dimensity flagship chipset</li>
+              <li>120W FlashCharge</li>
+            </ul>
+            <div class="price">From $999</div>
+            <a class="btn btn-primary" href="#contact">Buy Now</a>
+          </article>
+
+          <article class="card" aria-label="Vivo V30">
+            <img src="https://in-exstatic-vivofs.vivo.com/gdHFRinHEMrj3yPG/1738642505600/f975162964914980d0fa5f54c6df1a76.jpg" alt="Vivo V30 lifestyle image" loading="lazy" />
+            <h3>V30</h3>
+            <ul class="specs">
+              <li>50MP Portrait, Aura Light</li>
+              <li>6.7" AMOLED 120Hz</li>
+              <li>Slim Curved Design</li>
+              <li>80W Fast Charging</li>
+            </ul>
+            <div class="price">From $599</div>
+            <a class="btn btn-primary" href="#contact">Buy Now</a>
+          </article>
+
+          <article class="card" aria-label="Vivo T3 5G">
+            <img src="https://img-prd-pim.poorvika.com/cdn-cgi/image/width=500,height=500,quality=75/product/vivo-v40-5g-titanium-grey-256gb-8gb-ram-front-back-view.png" alt="Vivo T3 5G product image" loading="lazy" />
+            <h3>T3 5G</h3>
+            <ul class="specs">
+              <li>5G Performance, Gaming Turbo</li>
+              <li>6.64" AMOLED 120Hz</li>
+              <li>5000mAh Battery</li>
+              <li>44W Fast Charging</li>
+            </ul>
+            <div class="price">From $299</div>
+            <a class="btn btn-primary" href="#contact">Buy Now</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Features Carousels -->
+      <section id="features" aria-labelledby="features-title">
+        <h2 class="section-title" id="features-title">Key Features</h2>
+        <p class="section-sub">Zeiss optics and blazing-fast charging that keep you ahead.</p>
+
+        <!-- Zeiss Camera Carousel -->
+        <div class="carousel" data-carousel="zeiss" aria-label="Zeiss camera carousel">
+          <div class="carousel-track">
+            <div class="slide">
+              <img src="https://5.imimg.com/data5/SELLER/Default/2023/7/322696313/YT/LA/KI/188924882/vivo-mobile-phone.jpg" alt="Zeiss camera closeup" loading="lazy" />
+              <h4>Zeiss Optics</h4>
+              <p>Co-engineered with Zeiss for true-to-life color science, creamy bokeh, and stunning night portraits.</p>
+            </div>
+            <div class="slide">
+              <img src="https://in-exstatic-vivofs.vivo.com/gdHFRinHEMrj3yPG/1738642505600/f975162964914980d0fa5f54c6df1a76.jpg" alt="Low-light cityscape" loading="lazy" />
+              <h4>Master Night Mode</h4>
+              <p>Large sensor with advanced noise reduction captures crisp details even in near-dark scenes.</p>
+            </div>
+            <div class="slide">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNxI8rHJaCijOLScMlaX68aenWQyIl-ixs3g&s" alt="Portrait bokeh" loading="lazy" />
+              <h4>Portrait Perfection</h4>
+              <p>Zeiss-style portrait modes with cinematic bokeh for studio-grade shots anywhere.</p>
+            </div>
+          </div>
+          <div class="carousel-controls" aria-hidden="false">
+            <button class="prev" aria-label="Previous slide">&#10094;</button>
+            <button class="next" aria-label="Next slide">&#10095;</button>
+          </div>
+          <div class="dots" role="tablist" aria-label="Slide dots"></div>
+        </div>
+
+        <div style="height:20px"></div>
+
+        <!-- 120W Charging Carousel -->
+        <div class="carousel" data-carousel="charge" aria-label="Charging carousel">
+          <div class="carousel-track">
+            <div class="slide">
+              <img src="https://in-exstatic-vivofs.vivo.com/gdHFRinHEMrj3yPG/1747038695532/5f3c0635fdd4f07b5bdbf752c2a56215.jpg" alt="Charging animation" loading="lazy" />
+              <h4>120W FlashCharge</h4>
+              <p>0–50% in minutes. Top up quickly before you head out.</p>
+            </div>
+            <div class="slide">
+              <img src="https://img-prd-pim.poorvika.com/cdn-cgi/image/width=500,height=500,quality=75/product/vivo-v40-5g-titanium-grey-256gb-8gb-ram-front-back-view.png" alt="Battery endurance" loading="lazy" />
+              <h4>All‑Day Endurance</h4>
+              <p>Smart power management keeps you gaming, streaming, and creating longer.</p>
+            </div>
+            <div class="slide">
+              <img src="https://5.imimg.com/data5/SELLER/Default/2023/7/322696313/YT/LA/KI/188924882/vivo-mobile-phone.jpg" alt="Safe charging" loading="lazy" />
+              <h4>Safe & Efficient</h4>
+              <p>Advanced thermal controls deliver cool, consistent charging session after session.</p>
+            </div>
+          </div>
+          <div class="carousel-controls" aria-hidden="false">
+            <button class="prev" aria-label="Previous slide">&#10094;</button>
+            <button class="next" aria-label="Next slide">&#10095;</button>
+          </div>
+          <div class="dots" role="tablist" aria-label="Slide dots"></div>
+        </div>
+      </section>
+
+      <!-- Limited-time Offers -->
+      <section id="offers" aria-labelledby="offers-title">
+        <h2 class="section-title" id="offers-title">Limited‑Time Offers</h2>
+        <p class="section-sub">Exclusive launch deals. Don’t miss out.</p>
+        <div class="offer">
+          <p><strong>Bundle & Save:</strong> Get free TWS earbuds with X100 Pro.</p>
+          <p><strong>Exchange Bonus:</strong> Up to $200 extra on select devices.</p>
+          <p class="countdown" id="countdown" aria-live="polite">Offer ends in 03:00:00</p>
+          <div class="cta" style="margin-top:10px">
+            <a class="btn btn-primary" href="#contact">Grab the Offer</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section id="testimonials" aria-labelledby="testimonials-title" class="testimonials">
+        <h2 class="section-title" id="testimonials-title">What Users Say</h2>
+        <p class="section-sub">Real stories from our community.</p>
+        <div class="testimonial">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>“The Zeiss camera blew me away. Night portraits look cinematic.” — Alex R.</p>
+        </div>
+        <div class="testimonial">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>“Charging is insanely fast. A quick top‑up keeps me going all day.” — Priya S.</p>
+        </div>
+        <div class="testimonial">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★☆</div>
+          <p>“Smooth performance and gorgeous screen. Easily my favorite phone this year.” — Marco D.</p>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" aria-labelledby="contact-title">
+        <h2 class="section-title" id="contact-title">Get in Touch</h2>
+        <p class="section-sub">Questions or ready to order? Send us a message.</p>
+        <form id="contact-form" novalidate>
+          <div class="row two">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+            </div>
+          </div>
+          <div class="row two">
+            <div>
+              <label for="phone">Phone (optional)</label>
+              <input id="phone" name="phone" type="tel" placeholder="+1 555 123 4567" />
+            </div>
+            <div>
+              <label for="model">Model</label>
+              <input id="model" name="model" type="text" placeholder="X100 Pro / V30 / T3 5G" />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us how we can help" required></textarea>
+            </div>
+          </div>
+          <div class="cta" style="margin-top:10px">
+            <button class="btn btn-primary" type="submit">Send Message</button>
+          </div>
+          <p id="form-status" role="status" aria-live="polite" style="margin-top:10px"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="social" aria-label="Social links">
+          <a href="#" aria-label="Facebook">Facebook</a>
+          <a href="#" aria-label="Twitter">Twitter</a>
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="YouTube">YouTube</a>
+        </div>
+        <form class="newsletter" id="newsletter" aria-label="Newsletter signup" novalidate>
+          <input type="email" id="newsletter-email" placeholder="Subscribe to our newsletter" required />
+          <button class="btn btn-secondary" type="submit">Subscribe</button>
+        </form>
+        <div class="copyright">© <span id="year"></span> Vivo. All rights reserved.</div>
+      </div>
+    </footer>
+
+    <script>
+      // Carousel logic (simple, accessible, centered)
+      function initCarousel(root) {
+        const track = root.querySelector('.carousel-track');
+        const slides = Array.from(track.children);
+        const prev = root.querySelector('.prev');
+        const next = root.querySelector('.next');
+        const dotsWrap = root.querySelector('.dots');
+        let index = 0;
+
+        function renderDots() {
+          dotsWrap.innerHTML = '';
+          slides.forEach((_, i) => {
+            const b = document.createElement('button');
+            b.className = 'dot' + (i === index ? ' active' : '');
+            b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+            b.addEventListener('click', () => go(i));
+            dotsWrap.appendChild(b);
+          });
+        }
+
+        function go(i) {
+          index = (i + slides.length) % slides.length;
+          track.style.transform = `translateX(-${index * 100}%)`;
+          renderDots();
+        }
+
+        prev.addEventListener('click', () => go(index - 1));
+        next.addEventListener('click', () => go(index + 1));
+        root.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') go(index - 1);
+          if (e.key === 'ArrowRight') go(index + 1);
+        });
+
+        renderDots();
+
+        // Auto-play with pause on hover
+        let timer = setInterval(() => go(index + 1), 5000);
+        root.addEventListener('mouseenter', () => clearInterval(timer));
+        root.addEventListener('mouseleave', () => (timer = setInterval(() => go(index + 1), 5000)));
+      }
+
+      document.querySelectorAll('.carousel').forEach(initCarousel);
+
+      // Countdown for offers (3 hours from page load)
+      (function initCountdown() {
+        const el = document.getElementById('countdown');
+        const end = Date.now() + 3 * 60 * 60 * 1000;
+        function fmt(n) { return n.toString().padStart(2, '0'); }
+        const tick = () => {
+          const left = Math.max(0, end - Date.now());
+          const h = Math.floor(left / 3_600_000);
+          const m = Math.floor((left % 3_600_000) / 60_000);
+          const s = Math.floor((left % 60_000) / 1000);
+          el.textContent = `Offer ends in ${fmt(h)}:${fmt(m)}:${fmt(s)}`;
+          if (left === 0) clearInterval(iv);
+        };
+        const iv = setInterval(tick, 1000);
+        tick();
+      })();
+
+      // Contact form (client-side validation only)
+      document.getElementById('contact-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name');
+        const email = document.getElementById('email');
+        const message = document.getElementById('message');
+        const status = document.getElementById('form-status');
+        if (!name.value.trim() || !email.validity.valid || !message.value.trim()) {
+          status.textContent = 'Please fill out required fields with a valid email.';
+          status.style.color = '#ffd166';
+          return;
+        }
+        status.textContent = 'Thanks! We will get back to you shortly.';
+        status.style.color = '#2ee6a6';
+        e.target.reset();
+      });
+
+      // Newsletter form feedback
+      document.getElementById('newsletter').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const input = document.getElementById('newsletter-email');
+        if (!input.validity.valid) { input.reportValidity(); return; }
+        input.value = '';
+        alert('You are subscribed!');
+      });
+
+      // Year in footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
