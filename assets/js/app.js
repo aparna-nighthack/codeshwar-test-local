@@ -64,12 +64,19 @@
     return `<span class="rating"><span class="rating__fill" style="width:${pct}%"></span></span>`;
   }
 
+  // Prefer PNG product photos if present; fallback to SVG icons
+  function productPngPath(p) { return `assets/img/products/${p.id}.png`; }
+  function productImgTag(p) {
+    const png = productPngPath(p);
+    return `<img src="${png}" alt="${p.name}" onerror="this.onerror=null;this.src='${p.image}'">`;
+  }
+
   function productCard(p) {
     const wished = wishlist.has(p.id) ? ' active' : '';
     return `
       <article class="card" data-id="${p.id}" aria-label="${p.name}">
         <div class="card__thumb">
-          <img src="${p.image}" alt="${p.name}">
+          ${productImgTag(p)}
         </div>
         <div class="card__body">
           <h3 class="card__title">${p.name}</h3>
@@ -117,7 +124,7 @@
         const line = p.price * qty;
         return `
           <div class="cart__item" data-id="${id}">
-            <img src="${p.image}" alt="${p.name}">
+            ${productImgTag(p)}
             <div>
               <div><strong>${p.name}</strong></div>
               <div>${fmt(p.price)} each</div>
@@ -168,7 +175,7 @@
     }
     wrap.innerHTML = list.map(p => `
       <div class="wishlist__item" data-id="${p.id}">
-        <img src="${p.image}" alt="${p.name}">
+        ${productImgTag(p)}
         <div>
           <div><strong>${p.name}</strong></div>
           <div>${fmt(p.price)}</div>
@@ -187,7 +194,7 @@
   function showQuickView(id) {
     const p = productById(id);
     quickViewBody.innerHTML = `
-      <div class="modal__thumb"><img src="${p.image}" alt="${p.name}"></div>
+      <div class="modal__thumb">${productImgTag(p)}</div>
       <div>
         <h3 style="margin-top:0;">${p.name}</h3>
         <div style="display:flex; align-items:center; gap:8px;">${renderStars(p.rating)} <span>${p.rating.toFixed(1)}</span></div>
