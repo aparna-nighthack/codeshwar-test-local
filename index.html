@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sling Pizza — Hand‑tossed joy, baked to perfection</title>
+    <meta name="description" content="Sling Pizza serves hand‑tossed pies, fresh ingredients, and fast delivery. Order now or get product help via our contact form." />
+    <meta property="og:title" content="Sling Pizza" />
+    <meta property="og:description" content="Hand‑tossed joy, baked to perfection. Order now!" />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#" class="brand" aria-label="Sling Pizza home">
+          <span class="brand-mark" aria-hidden="true">🍕</span>
+          <span class="brand-name">sling</span>
+        </a>
+        <nav class="nav">
+          <a href="#menu">Menu</a>
+          <a href="#gallery">Gallery</a>
+          <a class="cta" href="#contact">Order</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Sling Pizza hero">
+        <div class="overlay"></div>
+        <div class="container hero-inner">
+          <h1>Hand‑tossed joy, baked to perfection.</h1>
+          <p>Fresh ingredients, stone‑baked bases, and flavors that sling you back for more.</p>
+          <div class="actions">
+            <a class="btn" href="#menu">View Menu</a>
+            <a class="btn btn-primary" href="#contact">Order Now</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="features container" aria-label="Highlights">
+        <div class="feature">
+          <h3>Fresh Ingredients</h3>
+          <p>Crisp veggies, premium cheeses, and house sauces made daily.</p>
+        </div>
+        <div class="feature">
+          <h3>Stone‑Baked</h3>
+          <p>High‑heat stone deck for airy crusts with a perfect char.</p>
+        </div>
+        <div class="feature">
+          <h3>Fast Delivery</h3>
+          <p>Hot pies at your door. Dine‑in and pickup also available.</p>
+        </div>
+      </section>
+
+      <section id="menu" class="menu-section" aria-label="Menu">
+        <div class="container">
+          <h2>Menu</h2>
+          <p class="muted">Prices are indicative; availability may vary.</p>
+          <ul class="menu-grid" role="list">
+            <li class="menu-card">
+              <div class="menu-head">
+                <h3>Margherita</h3>
+                <span class="price">$9</span>
+              </div>
+              <p>San Marzano tomato, fresh mozzarella, basil, EVOO.</p>
+            </li>
+            <li class="menu-card">
+              <div class="menu-head">
+                <h3>Pepperoni</h3>
+                <span class="price">$11</span>
+              </div>
+              <p>Classic pepperoni, mozzarella, oregano, chili honey drizzle.</p>
+            </li>
+            <li class="menu-card">
+              <div class="menu-head">
+                <h3>Veggie Supreme</h3>
+                <span class="price">$12</span>
+              </div>
+              <p>Bell peppers, onions, olives, mushrooms, sweet corn.</p>
+            </li>
+            <li class="menu-card">
+              <div class="menu-head">
+                <h3>BBQ Chicken</h3>
+                <span class="price">$13</span>
+              </div>
+              <p>BBQ chicken, red onion, smoked cheddar, cilantro.</p>
+            </li>
+            <li class="menu-card">
+              <div class="menu-head">
+                <h3>Paneer Tikka</h3>
+                <span class="price">$12</span>
+              </div>
+              <p>Tikka paneer, peppers, onions, mint yogurt swirl.</p>
+            </li>
+            <li class="menu-card">
+              <div class="menu-head">
+                <h3>Four Cheese</h3>
+                <span class="price">$12</span>
+              </div>
+              <p>Mozzarella, provolone, parmesan, gorgonzola, garlic butter.</p>
+            </li>
+          </ul>
+          <div class="menu-note">
+            <p>Crusts: Thin | Hand‑tossed | Cheese‑burst. Sizes: Small (9"), Medium (12"), Large (14").</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="gallery-section" aria-label="Gallery">
+        <div class="container">
+          <h2>Gallery</h2>
+          <div class="gallery-grid">
+            <figure>
+              <img src="https://imgmediagumlet.lbb.in/media/2020/11/5fa17943d511fc4b649fcfc2_1604417859096.jpg" alt="Close‑up of a delicious pizza with fresh toppings" />
+              <figcaption>Our stone‑baked signature pies</figcaption>
+            </figure>
+            <figure>
+              <img src="https://curlytales.com/wp-content/uploads/2019/09/pizza-feature.jpg" alt="Stack of cheesy pizzas fresh from the oven" />
+              <figcaption>Cheese pulls you can’t resist</figcaption>
+            </figure>
+            <figure>
+              <img src="https://bhukkadcompany.com/wp/wp-content/uploads/2024/06/21-Best-Pizzas-in-Mumbai-You-Must-Try-A-Pizza-Lovers-Paradise-1-710x473.png" alt="Assorted pizzas on a table with various toppings" />
+              <figcaption>Variety for every craving</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-section" aria-label="Contact and Orders">
+        <div class="container contact-grid">
+          <div class="contact-form-wrapper">
+            <h2>Contact & Orders</h2>
+            <p class="muted">Place an order or ask about our products. We typically reply within 10 minutes during open hours.</p>
+            <form id="orderForm" novalidate>
+              <div class="grid">
+                <label>
+                  <span>Full Name</span>
+                  <input type="text" name="name" required placeholder="Your name" />
+                </label>
+                <label>
+                  <span>Email</span>
+                  <input type="email" name="email" required placeholder="you@example.com" />
+                </label>
+                <label>
+                  <span>Phone</span>
+                  <input type="tel" name="phone" required placeholder="e.g. +1 555 0123" />
+                </label>
+                <label>
+                  <span>Inquiry Type</span>
+                  <select name="type" id="inquiryType" required>
+                    <option value="order" selected>Order</option>
+                    <option value="enquiry">Product Enquiry</option>
+                  </select>
+                </label>
+              </div>
+
+              <fieldset id="orderFields">
+                <legend>Order Details</legend>
+                <div class="grid">
+                  <label>
+                    <span>Pizza</span>
+                    <select name="pizza">
+                      <option>Margherita</option>
+                      <option>Pepperoni</option>
+                      <option>Veggie Supreme</option>
+                      <option>BBQ Chicken</option>
+                      <option>Paneer Tikka</option>
+                      <option>Four Cheese</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span>Size</span>
+                    <select name="size">
+                      <option>Small (9")</option>
+                      <option selected>Medium (12")</option>
+                      <option>Large (14")</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span>Quantity</span>
+                    <input type="number" name="quantity" min="1" value="1" />
+                  </label>
+                  <label>
+                    <span>Crust</span>
+                    <select name="crust">
+                      <option>Thin</option>
+                      <option selected>Hand‑tossed</option>
+                      <option>Cheese‑burst</option>
+                    </select>
+                  </label>
+                </div>
+                <label>
+                  <span>Extra Toppings (optional)</span>
+                  <input type="text" name="toppings" placeholder="e.g. jalapeño, extra cheese" />
+                </label>
+                <label>
+                  <span>Delivery Address</span>
+                  <textarea name="address" rows="2" placeholder="Street, city, ZIP"></textarea>
+                </label>
+                <label>
+                  <span>Preferred Time</span>
+                  <input type="text" name="time" placeholder="ASAP or a time window" />
+                </label>
+              </fieldset>
+
+              <label>
+                <span>Message</span>
+                <textarea name="message" rows="3" placeholder="Share any notes or questions"></textarea>
+              </label>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Send</button>
+                <p class="form-note muted">By sending, you agree to be contacted about your request.</p>
+              </div>
+
+              <output id="formStatus" role="status" aria-live="polite"></output>
+            </form>
+          </div>
+
+          <aside class="contact-info">
+            <h3>Visit or Reach Us</h3>
+            <ul>
+              <li><strong>Address:</strong> 21 Stone Deck Lane, Downtown</li>
+              <li><strong>Hours:</strong> Mon–Sun 11:00–23:00</li>
+              <li><strong>Phone:</strong> <a href="tel:+15550123">+1 555 0123</a></li>
+              <li><strong>Email:</strong> <a href="mailto:hello@sling.pizza">hello@sling.pizza</a></li>
+              <li><strong>Instagram:</strong> <a href="#" aria-label="Sling Pizza on Instagram">@sling.pizza</a></li>
+            </ul>
+            <p class="muted small">All images are for representational purposes. Gallery images courtesy of respective sources.</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> Sling Pizza. All rights reserved.</p>
+        <nav class="footer-nav">
+          <a href="#menu">Menu</a>
+          <a href="#contact">Contact</a>
+          <a href="#">Privacy</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+  <style>
+    /* Inline critical hero background for faster first paint */
+    .hero { background-image: url('https://imgmediagumlet.lbb.in/media/2020/11/5fa17943d511fc4b649fcfc2_1604417859096.jpg'); }
+  </style>
+</html>
+
