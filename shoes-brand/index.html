@@ -155,7 +155,26 @@
       </div>
     </footer>
 
+    <!-- Chatbot widget -->
+    <div class="chatbot" id="chatbot">
+      <button class="chat-toggle" aria-expanded="false" aria-controls="chat-window" aria-label="Open chat">
+        <span class="chat-badge" aria-hidden="true">💬</span>
+      </button>
+
+      <section id="chat-window" class="chat-window" aria-label="Support chat" hidden>
+        <header class="chat-header">
+          <div class="chat-title">Stride Assistant</div>
+          <button class="chat-close" aria-label="Close chat">×</button>
+        </header>
+        <div class="chat-messages" role="log" aria-live="polite" aria-relevant="additions" tabindex="0"></div>
+        <form class="chat-form" autocomplete="off">
+          <label for="chat-input" class="visually-hidden">Your message</label>
+          <input id="chat-input" name="message" type="text" placeholder="Ask about products, shipping, returns…" required />
+          <button class="btn primary chat-send" type="submit">Send</button>
+        </form>
+      </section>
+    </div>
+
     <script src="script.js"></script>
   </body>
   </html>
-
