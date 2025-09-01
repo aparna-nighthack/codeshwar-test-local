@@ -93,7 +93,23 @@
     <!-- Toasts -->
     <div id="toasts" class="toasts" aria-live="polite" aria-atomic="true"></div>
 
+    <!-- Chatbot -->
+    <button id="chatLauncher" class="chat-launcher" aria-label="Open chat" title="Chat with us">💬</button>
+    <section id="chatWindow" class="chat-window" aria-hidden="true" aria-label="Support chat">
+      <header class="chat-header">
+        <div>
+          <strong>Support</strong>
+          <div class="chat-subtitle">Ask about products, orders, returns</div>
+        </div>
+        <button class="close-btn" id="chatClose" aria-label="Close chat">✕</button>
+      </header>
+      <div id="chatBody" class="chat-body" aria-live="polite"></div>
+      <form id="chatForm" class="chat-input" aria-label="Send a message">
+        <input id="chatText" type="text" placeholder="Type your message..." autocomplete="off" aria-label="Message" />
+        <button type="submit" class="primary-btn" aria-label="Send">Send</button>
+      </form>
+    </section>
+
     <script src="app.js"></script>
   </body>
   </html>
-

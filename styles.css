@@ -121,8 +121,30 @@ body{
 /* Utilities */
 .hidden{display:none !important}
 
+/* Chatbot */
+.chat-launcher{
+  position:fixed; right:16px; bottom:16px; z-index:90;
+  width:56px; height:56px; border-radius:999px; border:none; cursor:pointer;
+  background:var(--brand); color:#111; font-size:22px; box-shadow:0 6px 18px rgba(0,0,0,.25);
+}
+.chat-launcher:hover{background:var(--brand-dark)}
+.chat-window{
+  position:fixed; right:16px; bottom:86px; width:340px; max-width:92vw; height:430px;
+  background:var(--panel); border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,.25);
+  display:none; flex-direction:column; overflow:hidden; z-index:90; border:1px solid #e5e7eb;
+}
+.chat-window.open{display:flex}
+.chat-header{display:flex; align-items:center; justify-content:space-between; padding:10px 12px; background:#232f3e; color:#fff}
+.chat-subtitle{font-size:11px; color:#d1d5db}
+.chat-body{flex:1; padding:12px; overflow:auto; display:flex; flex-direction:column; gap:8px; background:#fafafa}
+.chat-msg{max-width:78%; padding:8px 10px; border-radius:10px; line-height:1.3; font-size:14px; box-shadow:0 1px 2px var(--ring)}
+.chat-msg.user{align-self:flex-end; background:#dcfce7;}
+.chat-msg.bot{align-self:flex-start; background:#fff}
+.chat-input{display:flex; gap:8px; padding:10px; border-top:1px solid #e5e7eb; background:#fff}
+.chat-input input{flex:1; height:36px; border:1px solid #e5e7eb; border-radius:8px; padding:0 10px}
+.chat-suggestion{display:inline-block; margin:4px 6px 0 0; padding:6px 8px; border:1px solid #e5e7eb; border-radius:16px; cursor:pointer; background:#fff; font-size:12px}
+
 /* Responsive tweaks */
 @media (max-width: 800px){
   .modal-content{grid-template-columns:1fr}
 }
-

@@ -448,6 +448,127 @@ function init(){
   renderCart();
   renderWishlist();
   bindEvents();
+  initChatbot();
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+// Chatbot (frontend-only demo)
+function initChatbot(){
+  const launcher = document.getElementById('chatLauncher');
+  const win = document.getElementById('chatWindow');
+  const closeBtn = document.getElementById('chatClose');
+  const body = document.getElementById('chatBody');
+  const form = document.getElementById('chatForm');
+  const input = document.getElementById('chatText');
+
+  function setOpen(open){
+    win.classList.toggle('open', open);
+    win.setAttribute('aria-hidden', open? 'false' : 'true');
+  }
+  launcher.addEventListener('click', ()=>{ setOpen(true); input.focus(); if(!body.dataset.greeted){ chatbotGreet(); body.dataset.greeted='1'; } });
+  closeBtn.addEventListener('click', ()=> setOpen(false));
+
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const text = input.value.trim();
+    if(!text) return;
+    addChatMsg('user', escapeHtml(text));
+    input.value='';
+    setTimeout(()=> respondTo(text), 150);
+  });
+
+  body.addEventListener('click', (e)=>{
+    const sug = e.target.closest('.chat-suggestion');
+    if(sug){
+      const t = sug.dataset.text || sug.textContent;
+      addChatMsg('user', escapeHtml(t));
+      setTimeout(()=> respondTo(t), 100);
+    }
+    const qv = e.target.closest('[data-chat-qv]');
+    if(qv){
+      showQuickView(qv.dataset.chatQv);
+    }
+  });
+
+  function chatbotGreet(){
+    addChatMsg('bot', `Hi there! I can help with orders, returns, and product questions.`);
+    addChatMsg('bot', suggestionsHTML([
+      'Where is my order?', 'Return policy', 'Show laptops', 'Contact support'
+    ]));
+  }
+
+  function suggestionsHTML(items){
+    return items.map(i=>`<button class="chat-suggestion" data-text="${escapeHtml(i)}">${escapeHtml(i)}</button>`).join('');
+  }
+
+  function addChatMsg(role, html){
+    const el = document.createElement('div');
+    el.className = `chat-msg ${role}`;
+    el.innerHTML = html;
+    body.appendChild(el);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function respondTo(raw){
+    const msg = raw.toLowerCase();
+    // Basic intents
+    if(/(where.*order|track.*order|order status)/.test(msg)){
+      addChatMsg('bot', 'For this demo, orders are not linked. If you placed an order, check your email for a tracking link.');
+      return;
+    }
+    if(/(return|refund)/.test(msg)){
+      addChatMsg('bot', 'Returns: 30-day hassle-free returns on most items. Refunds are processed to the original payment method within 3–5 business days after we receive the item.');
+      return;
+    }
+    if(/(ship|delivery)/.test(msg)){
+      addChatMsg('bot', 'Shipping: Standard delivery in 3–5 business days. Expedited options at checkout. Free shipping over $50.');
+      return;
+    }
+    if(/(warranty)/.test(msg)){
+      addChatMsg('bot', 'Warranty: Most electronics include a 1-year limited warranty. Brand policies may vary by product.');
+      return;
+    }
+    if(/(contact|support|agent|help)/.test(msg)){
+      addChatMsg('bot', 'You can email us at support@example.com or chat here. What do you need help with?');
+      return;
+    }
+
+    // Product/category search using built-in dataset
+    const catMap = {
+      laptop: 'laptop', phone:'smartphone', smartphone:'smartphone', headphones:'headphone', headphone:'headphone', camera:'camera', watch:'smartwatch', smartwatch:'smartwatch', speaker:'speaker', drone:'drone', console:'game console', powerbank:'powerbank', power:'powerbank'
+    };
+    const words = msg.split(/[^a-z0-9+]+/);
+    let cat = words.map(w=>catMap[w]).find(Boolean);
+    let q = msg.replace(/(show|find|search|recommend|suggest|best|cheap|budget|under|below)\b/g,'').trim();
+    let list = PRODUCTS;
+    if(cat){ list = list.filter(p=>p.category===cat); }
+    if(q){ list = list.filter(p=> (p.title+" "+p.brand+" "+p.category).toLowerCase().includes(q)); }
+    if(cat || (q && list.length)){
+      const top = list.slice(0,3);
+      if(top.length){
+        const html = top.map(p=>`
+          <div>
+            <strong>${escapeHtml(p.title)}</strong><br/>
+            <span class="muted">${escapeHtml(p.brand)}</span> • <span>${fmt(p.price)}</span><br/>
+            <button class="chat-suggestion" data-chat-qv="${p.id}">Quick view</button>
+            <button class="chat-suggestion" data-text="Add ${escapeHtml(p.title)} to cart">Add to cart</button>
+          </div>
+        `).join('');
+        addChatMsg('bot', html);
+        return;
+      }
+    }
+
+    // Add to cart intent
+    const addMatch = raw.match(/add (.+) to cart/i);
+    if(addMatch){
+      const name = addMatch[1].toLowerCase();
+      const prod = PRODUCTS.find(p=> p.title.toLowerCase().includes(name));
+      if(prod){ addToCart(prod.id,1); addChatMsg('bot', `Added “${escapeHtml(prod.title)}” to your cart.`); return; }
+    }
+
+    // Fallback
+    addChatMsg('bot', "I'm not sure yet. Try asking about shipping, returns, or say ‘show laptops’.");
+  }
+}
