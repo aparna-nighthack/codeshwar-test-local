@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stride — Modern Shoes Brand</title>
+    <meta name="description" content="Stride crafts modern, comfortable, and sustainable shoes. Shop bestsellers and new arrivals." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#" class="logo" aria-label="Stride home">Stride</a>
+
+        <nav class="main-nav" id="mainNav">
+          <a href="#shop">Shop</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a class="btn btn-primary header-cta" href="#shop">Shop Now</a>
+        <button class="menu-toggle" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <h1>Comfort that keeps you moving</h1>
+            <p>Meet Stride — lightweight, breathable shoes designed for all‑day wear and built with sustainable materials.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#shop">Explore Collection</a>
+              <a class="btn btn-ghost" href="#about">Our Story</a>
+            </div>
+            <ul class="hero-bullets">
+              <li>Ultra‑light foam sole</li>
+              <li>Recycled knit upper</li>
+              <li>Free returns within 30 days</li>
+            </ul>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="shoe-blob"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="shop" class="products">
+        <div class="container">
+          <div class="section-head">
+            <h2>Bestsellers</h2>
+            <p>Fan favorites loved for comfort and versatility.</p>
+          </div>
+          <div class="product-grid">
+            <!-- Card 1 -->
+            <article class="card">
+              <div class="media" role="img" aria-label="Stride Runner in Graphite"></div>
+              <div class="card-body">
+                <h3 class="card-title">Stride Runner</h3>
+                <p class="price">$89</p>
+                <button class="btn btn-secondary add-to-cart" data-name="Stride Runner" data-price="89">Add to Cart</button>
+              </div>
+            </article>
+            <!-- Card 2 -->
+            <article class="card">
+              <div class="media media-blue" role="img" aria-label="City Knit in Ocean"></div>
+              <div class="card-body">
+                <h3 class="card-title">City Knit</h3>
+                <p class="price">$98</p>
+                <button class="btn btn-secondary add-to-cart" data-name="City Knit" data-price="98">Add to Cart</button>
+              </div>
+            </article>
+            <!-- Card 3 -->
+            <article class="card">
+              <div class="media media-green" role="img" aria-label="Everyday Slip in Moss"></div>
+              <div class="card-body">
+                <h3 class="card-title">Everyday Slip</h3>
+                <p class="price">$79</p>
+                <button class="btn btn-secondary add-to-cart" data-name="Everyday Slip" data-price="79">Add to Cart</button>
+              </div>
+            </article>
+            <!-- Card 4 -->
+            <article class="card">
+              <div class="media media-orange" role="img" aria-label="Trail Pro in Ember"></div>
+              <div class="card-body">
+                <h3 class="card-title">Trail Pro</h3>
+                <p class="price">$119</p>
+                <button class="btn btn-secondary add-to-cart" data-name="Trail Pro" data-price="119">Add to Cart</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="container feature-grid">
+          <article>
+            <h3>Cloud Comfort</h3>
+            <p>Cushioned foam soles absorb impact and keep you light on your feet.</p>
+          </article>
+          <article>
+            <h3>Breathable Knit</h3>
+            <p>Flexible, airy uppers made from recycled fibers for a glove‑like fit.</p>
+          </article>
+          <article>
+            <h3>Earth‑Friendly</h3>
+            <p>Responsible materials and packaging to reduce our footprint.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" class="about">
+        <div class="container about-grid">
+          <div>
+            <h2>Our Story</h2>
+            <p>We started Stride with a simple idea: shoes should feel great, look sharp, and be better for the planet. We obsess over details — from foam density to knit patterns — so you can focus on your day, not your feet.</p>
+            <p>Every pair is designed in-house and tested in the real world by commuters, walkers, and weekend adventurers.</p>
+          </div>
+          <div class="about-card" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="container contact-grid">
+          <div>
+            <h2>Get in touch</h2>
+            <p>Questions about fit, returns, or bulk orders? Send us a note.</p>
+            <ul class="contact-list">
+              <li><strong>Email:</strong> hello@stride.example</li>
+              <li><strong>Phone:</strong> (555) 123‑4567</li>
+            </ul>
+          </div>
+          <form class="contact-form" id="contactForm">
+            <label>
+              <span class="label">Name</span>
+              <input type="text" name="name" required />
+            </label>
+            <label>
+              <span class="label">Email</span>
+              <input type="email" name="email" required />
+            </label>
+            <label class="full">
+              <span class="label">Message</span>
+              <textarea name="message" rows="4" required></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Send Message</button>
+            <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="logo" href="#">Stride</a>
+          <p class="muted">Modern shoes for daily life.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Policies</h4>
+          <ul>
+            <li><a href="#">Shipping & Returns</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Newsletter</h4>
+          <form class="newsletter" id="newsletterForm">
+            <input type="email" placeholder="Your email" aria-label="Email address" required />
+            <button class="btn btn-secondary" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="container footer-baseline">
+        <p>© <span id="year"></span> Stride Footwear Co.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
+
