@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stride — Shoes for every step</title>
+    <meta name="description" content="Stride makes comfortable, durable shoes for everyday performance." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" id="home">
+      <div class="container nav-wrap">
+        <a href="#home" class="brand" aria-label="Stride home">
+          <span class="brand-mark" aria-hidden="true">👟</span>
+          <span class="brand-name">Stride</span>
+        </a>
+
+        <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="#products">Products</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <h1>Shoes that keep up with you</h1>
+            <p>Lightweight comfort. Everyday durability. Thoughtful design without the hype.</p>
+            <div class="hero-ctas">
+              <a class="btn primary" href="#products">Shop New Arrivals</a>
+              <a class="btn ghost" href="#about">Why Stride?</a>
+            </div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="shoe-card">
+              <div class="shoe-emoji">👟</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="products" id="products" aria-labelledby="products-title">
+        <div class="container">
+          <h2 id="products-title">Featured products</h2>
+          <div class="grid">
+            <article class="card product">
+              <div class="media" aria-hidden="true">🟦</div>
+              <div class="content">
+                <h3>Stride Runner</h3>
+                <p class="muted">Breathable mesh, responsive cushioning.</p>
+                <div class="meta">
+                  <span class="price">$89</span>
+                  <a href="#contact" class="btn small">View details</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="card product">
+              <div class="media" aria-hidden="true">🟩</div>
+              <div class="content">
+                <h3>Urban Walk</h3>
+                <p class="muted">All‑day comfort with city style.</p>
+                <div class="meta">
+                  <span class="price">$79</span>
+                  <a href="#contact" class="btn small">View details</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="card product">
+              <div class="media" aria-hidden="true">🟥</div>
+              <div class="content">
+                <h3>Trail Pro</h3>
+                <p class="muted">Grip and support for off‑road days.</p>
+                <div class="meta">
+                  <span class="price">$109</span>
+                  <a href="#contact" class="btn small">View details</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="about" id="about" aria-labelledby="about-title">
+        <div class="container">
+          <h2 id="about-title">Designed for real life</h2>
+          <div class="about-grid">
+            <p>
+              We started Stride to make shoes that feel great from the
+              first step. Every pair uses recycled materials, thoughtful
+              construction, and timeless shapes so you can go farther with less.
+            </p>
+            <ul class="features">
+              <li><strong>Comfort:</strong> Cushioned midsoles, breathable uppers.</li>
+              <li><strong>Durability:</strong> Reinforced wear zones, quality stitching.</li>
+              <li><strong>Sustainability:</strong> Recycled and responsibly sourced materials.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" aria-labelledby="cta-title">
+        <div class="container cta-inner">
+          <h2 id="cta-title">Find your perfect fit</h2>
+          <p>Tell us your size and style. We’ll suggest the best match.</p>
+          <a class="btn primary" href="#contact">Get recommendations</a>
+        </div>
+      </section>
+
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <div class="container contact-grid">
+          <div>
+            <h2 id="contact-title">Stay in the loop</h2>
+            <p class="muted">Join our newsletter for drops, restocks, and tips.</p>
+          </div>
+          <form class="newsletter" action="#" method="post" novalidate>
+            <label for="email" class="visually-hidden">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+            <button class="btn primary" type="submit">Subscribe</button>
+            <p class="form-note" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="brand-col">
+          <a href="#home" class="brand">
+            <span class="brand-mark" aria-hidden="true">👟</span>
+            <span class="brand-name">Stride</span>
+          </a>
+          <p class="muted small">© <span id="year"></span> Stride Footwear Co.</p>
+        </div>
+        <div class="links-col">
+          <a href="#products">Products</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="social-col">
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="Twitter">Twitter</a>
+          <a href="#" aria-label="Facebook">Facebook</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
+
