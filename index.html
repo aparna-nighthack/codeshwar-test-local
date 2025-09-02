@@ -19,6 +19,13 @@
           <a href="#team">Team</a>
           <a href="#contact">Contact</a>
         </nav>
+        <div class="auth-area" id="authArea">
+          <button class="btn ghost" id="authOpen">Sign In</button>
+          <div class="user-badge" id="userBadge" hidden>
+            <span id="userName">User</span>
+            <button class="btn ghost" id="signOut">Sign Out</button>
+          </div>
+        </div>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -248,7 +255,47 @@
       </div>
     </div>
 
+    <!-- Auth Modal -->
+    <div class="auth-backdrop" id="authBackdrop" aria-hidden="true">
+      <div class="auth-modal" role="dialog" aria-labelledby="authTitle" aria-modal="true">
+        <button class="auth-close" id="authClose" aria-label="Close">×</button>
+        <div class="auth-header">
+          <h3 id="authTitle">Welcome</h3>
+          <div class="auth-tabs" role="tablist">
+            <button class="auth-tab active" id="tabLogin" role="tab" aria-selected="true">Login</button>
+            <button class="auth-tab" id="tabSignup" role="tab">Sign Up</button>
+          </div>
+        </div>
+        <div class="auth-body">
+          <form id="loginForm" class="auth-form" autocomplete="on">
+            <label for="loginUsername">Username</label>
+            <input id="loginUsername" name="username" type="text" placeholder="e.g. aparna" required class="neon-input" />
+            <label for="loginPassword">Password</label>
+            <input id="loginPassword" name="password" type="password" placeholder="Your password" required class="neon-input" />
+            <div class="actions">
+              <button type="submit" class="btn primary pulse" id="loginSubmit">Sign In</button>
+              <div class="form-error" id="loginError" aria-live="polite"></div>
+            </div>
+            <div class="hint">Default: username “aparna”, password “password”.</div>
+          </form>
+
+          <form id="signupForm" class="auth-form" hidden autocomplete="on">
+            <label for="signupUsername">Username</label>
+            <input id="signupUsername" name="username" type="text" placeholder="Choose a username" minlength="3" required class="neon-input" />
+            <label for="signupEmail">Email (optional)</label>
+            <input id="signupEmail" name="email" type="email" placeholder="you@domain.com" class="neon-input" />
+            <label for="signupPassword">Password</label>
+            <input id="signupPassword" name="password" type="password" placeholder="Create a password" minlength="6" required class="neon-input" />
+            <label for="signupConfirm">Confirm Password</label>
+            <input id="signupConfirm" name="confirm" type="password" placeholder="Repeat password" minlength="6" required class="neon-input" />
+            <div class="actions">
+              <button type="submit" class="btn primary pulse" id="signupSubmit">Create Account</button>
+              <div class="form-error" id="signupError" aria-live="polite"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
   </html>
-
