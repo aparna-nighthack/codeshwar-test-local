@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop Home</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="logo">My Shop</h1>
+    </header>
+
+    <main class="container">
+      <!-- Filter Bar -->
+      <section class="filter-bar" aria-label="Product filters">
+        <label for="sortSelect" class="filter-label">Sort by:</label>
+        <select id="sortSelect" class="filter-select" aria-controls="productGrid">
+          <option value="default">Default</option>
+          <option value="priceAsc">Price: Low to High</option>
+          <option value="priceDesc">Price: High to Low</option>
+        </select>
+      </section>
+
+      <!-- Product Grid -->
+      <section id="productGrid" class="product-grid" aria-live="polite">
+        <!-- Example products (you can replace with dynamic data later) -->
+        <article class="product-card" data-price="39.99" data-index>
+          <img src="https://via.placeholder.com/300x200?text=Product+A" alt="Product A" />
+          <div class="product-info">
+            <h3>Product A</h3>
+            <p class="price" aria-label="Price">$39.99</p>
+          </div>
+        </article>
+
+        <article class="product-card" data-price="19.5" data-index>
+          <img src="https://via.placeholder.com/300x200?text=Product+B" alt="Product B" />
+          <div class="product-info">
+            <h3>Product B</h3>
+            <p class="price" aria-label="Price">$19.50</p>
+          </div>
+        </article>
+
+        <article class="product-card" data-price="85" data-index>
+          <img src="https://via.placeholder.com/300x200?text=Product+C" alt="Product C" />
+          <div class="product-info">
+            <h3>Product C</h3>
+            <p class="price" aria-label="Price">$85.00</p>
+          </div>
+        </article>
+
+        <article class="product-card" data-price="55.25" data-index>
+          <img src="https://via.placeholder.com/300x200?text=Product+D" alt="Product D" />
+          <div class="product-info">
+            <h3>Product D</h3>
+            <p class="price" aria-label="Price">$55.25</p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <!-- Chatbot Widget -->
+    <button id="chatToggle" class="chat-toggle" aria-haspopup="dialog" aria-controls="chatbot" aria-expanded="false" title="Chat with us">
+      💬
+    </button>
+    <section id="chatbot" class="chatbot" role="dialog" aria-label="Support chat" aria-modal="false" hidden>
+      <header class="chatbot-header">
+        <h2>Support</h2>
+        <button id="chatClose" class="chat-close" aria-label="Close chat">×</button>
+      </header>
+      <div id="chatMessages" class="chat-messages" aria-live="polite"></div>
+      <form id="chatForm" class="chat-form" autocomplete="off">
+        <input id="chatInput" class="chat-input" type="text" name="message" placeholder="Type your message..." aria-label="Message" required />
+        <button class="chat-send" type="submit">Send</button>
+      </form>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
+
