@@ -1,0 +1,133 @@
+:root {
+  --bg: #0b0d12;
+  --surface: #12151c;
+  --text: #e8edf2;
+  --muted: #aeb7c2;
+  --accent: #4f8cff;
+  --accent-2: #38bdf8;
+  --border: #232736;
+  --success: #22c55e;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #0b0d12 0%, #0f1220 100%);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(18, 21, 28, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  margin: 0;
+  padding: 16px 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+.filter-label { color: var(--muted); font-size: 14px; }
+.filter-select {
+  background: #0f1320;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.product-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.product-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.28); }
+.product-card img { width: 100%; height: 160px; object-fit: cover; display: block; }
+.product-info { padding: 12px; }
+.product-info h3 { margin: 0 0 8px; font-size: 16px; }
+.price { margin: 0; color: var(--accent-2); font-weight: 600; }
+
+/* Chatbot */
+.chat-toggle {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.chatbot {
+  position: fixed;
+  right: 20px;
+  bottom: 86px;
+  width: 320px;
+  max-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+.chatbot-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 12px;
+  background: #12182a;
+  border-bottom: 1px solid var(--border);
+}
+.chat-close {
+  background: transparent; color: var(--muted); border: none; font-size: 20px; cursor: pointer;
+}
+.chat-messages {
+  padding: 12px; gap: 8px; display: flex; flex-direction: column; overflow: auto; min-height: 160px;
+}
+.msg { padding: 8px 10px; max-width: 80%; border-radius: 10px; line-height: 1.35; }
+.msg.user { align-self: flex-end; background: #1b2032; border: 1px solid #2a2f45; }
+.msg.bot { align-self: flex-start; background: #121a2c; border: 1px solid #26324a; }
+.chat-form { display: flex; gap: 8px; padding: 10px; border-top: 1px solid var(--border); }
+.chat-input { flex: 1; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: #0f1320; color: var(--text); }
+.chat-send { padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--accent); color: white; cursor: pointer; }
+
+/* Small screens */
+@media (max-width: 480px) {
+  .chatbot { right: 10px; left: 10px; width: auto; }
+}
+
