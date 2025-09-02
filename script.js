@@ -4,6 +4,52 @@
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
+// Theme: persistent dark/light toggle
+const themeToggleBtn = $('#themeToggle');
+const THEME_KEY = 'theme';
+
+function applyTheme(theme) {
+  const t = theme === 'light' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+  if (themeToggleBtn) {
+    themeToggleBtn.setAttribute('aria-pressed', String(t === 'dark'));
+    themeToggleBtn.textContent = t === 'dark' ? '🌙' : '☀️';
+    themeToggleBtn.title = t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+  }
+}
+
+function getStoredTheme() {
+  const v = localStorage.getItem(THEME_KEY);
+  return v === 'light' || v === 'dark' ? v : null;
+}
+
+function getPreferredTheme() {
+  const stored = getStoredTheme();
+  if (stored) return stored;
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+// Initialize theme
+applyTheme(getPreferredTheme());
+
+// React to system changes only if user hasn't chosen explicitly
+if (window.matchMedia) {
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  mq.addEventListener('change', () => {
+    if (!getStoredTheme()) applyTheme(mq.matches ? 'dark' : 'light');
+  });
+}
+
+// Toggle + persist
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') || getPreferredTheme();
+    const next = current === 'dark' ? 'light' : 'dark';
+    localStorage.setItem(THEME_KEY, next);
+    applyTheme(next);
+  });
+}
+
 // Header: mobile nav toggle
 const nav = $('#nav');
 const navToggle = $('#navToggle');
@@ -246,4 +292,3 @@ function botReply(input) {
   }
   return 'Great question! A member of our team will follow up — feel free to leave details in the contact form.';
 }
-
