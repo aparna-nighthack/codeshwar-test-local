@@ -247,3 +247,162 @@ function botReply(input) {
   return 'Great question! A member of our team will follow up — feel free to leave details in the contact form.';
 }
 
+// =========================
+// Auth: Login / Signup Modal
+// =========================
+(function initAuth() {
+  const USERS_KEY = 'codex_users';
+  const SESSION_KEY = 'codex_session';
+
+  const authOpen = $('#authOpen');
+  const authBackdrop = $('#authBackdrop');
+  const authClose = $('#authClose');
+  const tabLogin = $('#tabLogin');
+  const tabSignup = $('#tabSignup');
+  const loginForm = $('#loginForm');
+  const signupForm = $('#signupForm');
+  const loginError = $('#loginError');
+  const signupError = $('#signupError');
+  const userBadge = $('#userBadge');
+  const userName = $('#userName');
+  const signOut = $('#signOut');
+
+  // Storage helpers
+  function loadUsers() {
+    try { return JSON.parse(sessionStorage.getItem(USERS_KEY) || '{}'); } catch { return {}; }
+  }
+  function saveUsers(users) {
+    sessionStorage.setItem(USERS_KEY, JSON.stringify(users));
+  }
+  function getSession() {
+    try { return JSON.parse(sessionStorage.getItem(SESSION_KEY) || 'null'); } catch { return null; }
+  }
+  function setSession(s) {
+    if (s) sessionStorage.setItem(SESSION_KEY, JSON.stringify(s)); else sessionStorage.removeItem(SESSION_KEY);
+  }
+
+  // Crypto helpers
+  async function sha256(text) {
+    if (window.crypto?.subtle) {
+      const enc = new TextEncoder();
+      const buf = await crypto.subtle.digest('SHA-256', enc.encode(text));
+      const arr = Array.from(new Uint8Array(buf));
+      return arr.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+    // Fallback (not secure, but avoids breakage)
+    try { return btoa(text); } catch { return text; }
+  }
+  function randomToken() {
+    const arr = new Uint8Array(16);
+    (window.crypto || window.msCrypto).getRandomValues(arr);
+    return Array.from(arr).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  // Seed default user if missing
+  (async () => {
+    const users = loadUsers();
+    const key = 'aparna'.toLowerCase();
+    if (!users[key]) {
+      users[key] = {
+        username: 'aparna',
+        email: '',
+        pwHash: await sha256('password'),
+        createdAt: Date.now()
+      };
+      saveUsers(users);
+    }
+  })();
+
+  // UI control
+  function openModal(which = 'login') {
+    authBackdrop.classList.add('open');
+    authBackdrop.setAttribute('aria-hidden', 'false');
+    switchTab(which);
+    setTimeout(() => {
+      const focusEl = which === 'login' ? $('#loginUsername') : $('#signupUsername');
+      focusEl && focusEl.focus();
+    }, 0);
+    document.addEventListener('keydown', onEsc, { once: true });
+  }
+  function closeModal() {
+    authBackdrop.classList.remove('open');
+    authBackdrop.setAttribute('aria-hidden', 'true');
+  }
+  function onEsc(e) { if (e.key === 'Escape') closeModal(); }
+  function switchTab(which) {
+    const toLogin = which === 'login';
+    tabLogin.classList.toggle('active', toLogin);
+    tabSignup.classList.toggle('active', !toLogin);
+    loginForm.hidden = !toLogin;
+    signupForm.hidden = toLogin;
+  }
+
+  function showAuthed(username) {
+    if (!username) {
+      userBadge.hidden = true;
+      authOpen.hidden = false;
+      return;
+    }
+    userName.textContent = username;
+    userBadge.hidden = false;
+    authOpen.hidden = true;
+  }
+
+  // Event bindings
+  if (authOpen) authOpen.addEventListener('click', () => openModal('login'));
+  if (authClose) authClose.addEventListener('click', closeModal);
+  if (authBackdrop) authBackdrop.addEventListener('click', (e) => { if (e.target === authBackdrop) closeModal(); });
+  tabLogin.addEventListener('click', () => switchTab('login'));
+  tabSignup.addEventListener('click', () => switchTab('signup'));
+
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    loginError.textContent = '';
+    const username = $('#loginUsername').value.trim();
+    const password = $('#loginPassword').value;
+    if (!username || !password) { loginError.textContent = 'Enter username and password.'; return; }
+    const users = loadUsers();
+    const rec = users[username.toLowerCase()];
+    if (!rec) { loginError.textContent = 'User not found.'; return; }
+    const hash = await sha256(password);
+    if (hash !== rec.pwHash) { loginError.textContent = 'Invalid password.'; return; }
+    const session = { user: rec.username, token: randomToken(), issuedAt: Date.now() };
+    setSession(session);
+    showAuthed(session.user);
+    closeModal();
+  });
+
+  signupForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    signupError.textContent = '';
+    const username = $('#signupUsername').value.trim();
+    const email = $('#signupEmail').value.trim();
+    const password = $('#signupPassword').value;
+    const confirm = $('#signupConfirm').value;
+    if (username.length < 3) { signupError.textContent = 'Username must be at least 3 characters.'; return; }
+    if (password.length < 6) { signupError.textContent = 'Password must be at least 6 characters.'; return; }
+    if (password !== confirm) { signupError.textContent = 'Passwords do not match.'; return; }
+    const users = loadUsers();
+    const key = username.toLowerCase();
+    if (users[key]) { signupError.textContent = 'Username already exists.'; return; }
+    users[key] = { username, email, pwHash: await sha256(password), createdAt: Date.now() };
+    saveUsers(users);
+    const session = { user: username, token: randomToken(), issuedAt: Date.now() };
+    setSession(session);
+    showAuthed(session.user);
+    closeModal();
+  });
+
+  if (signOut) signOut.addEventListener('click', () => {
+    setSession(null);
+    showAuthed(null);
+  });
+
+  // Restore session if present
+  const session = getSession();
+  if (session?.user) {
+    showAuthed(session.user);
+  } else {
+    showAuthed(null);
+  }
+})();
