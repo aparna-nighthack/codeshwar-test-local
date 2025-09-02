@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NexusAI Labs — Next‑Gen Intelligent Solutions</title>
+    <meta name="description" content="NexusAI Labs builds intelligent AI solutions. Explore demos, use cases, and connect with our team." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Sticky Header -->
+    <header class="header" id="top">
+      <div class="container header-inner">
+        <a href="#top" class="logo">Nexus<span>AI</span> Labs</a>
+        <nav class="nav" id="nav">
+          <a href="#hero">Home</a>
+          <a href="#demo">Demo</a>
+          <a href="#use-cases">Use Cases</a>
+          <a href="#team">Team</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="hero" aria-label="NexusAI Labs Hero">
+      <div class="hero-bg" role="img" aria-label="Futuristic neural network background"></div>
+      <div class="container hero-content">
+        <h1 class="glow">Build With The Next Wave Of Intelligence</h1>
+        <p>Cutting-edge AI systems engineered for real-time insight, trust, and scale.</p>
+        <div class="hero-cta">
+          <a class="btn primary" href="#demo">Try Interactive Demo</a>
+          <a class="btn ghost" href="#use-cases">Explore Use Cases</a>
+        </div>
+      </div>
+      <div class="hero-grid-overlay" aria-hidden="true"></div>
+    </section>
+
+    <!-- Interactive Demo -->
+    <section class="section" id="demo">
+      <div class="container">
+        <div class="section-head">
+          <h2>Interactive AI Demo</h2>
+          <p>Type text, select a model, and watch simulated streaming output with real-time states.</p>
+        </div>
+
+        <div class="demo">
+          <form class="demo-form" id="demoForm" novalidate>
+            <label for="demoText">Input Text</label>
+            <textarea id="demoText" name="demoText" rows="5" placeholder="Paste or type some text…" required></textarea>
+
+            <div class="row">
+              <div class="field">
+                <label for="demoModel">AI Model</label>
+                <select id="demoModel" name="demoModel" required>
+                  <option value="">Select a task…</option>
+                  <option value="summarization">Summarization</option>
+                  <option value="sentiment">Sentiment Analysis</option>
+                  <option value="keyphrases">Keyphrase Extraction</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="demoTone">Tone</label>
+                <select id="demoTone" name="demoTone">
+                  <option value="balanced">Balanced</option>
+                  <option value="formal">Formal</option>
+                  <option value="concise">Concise</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button type="submit" class="btn primary">Run</button>
+              <button type="button" id="demoClear" class="btn ghost">Clear</button>
+            </div>
+            <div id="demoError" class="form-error" aria-live="polite"></div>
+          </form>
+
+          <div class="demo-output" id="demoOutput">
+            <div class="status" id="demoStatus">
+              <div class="dot dot1"></div>
+              <div class="dot dot2"></div>
+              <div class="dot dot3"></div>
+              <span>Waiting for input…</span>
+            </div>
+            <div class="stream" id="demoStream"></div>
+            <div class="progress" id="demoProgress"><span></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="section alt" id="use-cases">
+      <div class="container">
+        <div class="section-head">
+          <h2>Use Cases</h2>
+          <p>Deploy across industries with confidence. Filter to explore.</p>
+        </div>
+        <div class="filters" id="filters" role="tablist" aria-label="Use case filters">
+          <button class="chip active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="chip" data-filter="healthcare" role="tab">Healthcare</button>
+          <button class="chip" data-filter="finance" role="tab">Finance</button>
+          <button class="chip" data-filter="retail" role="tab">Retail</button>
+          <button class="chip" data-filter="manufacturing" role="tab">Manufacturing</button>
+          <button class="chip" data-filter="education" role="tab">Education</button>
+        </div>
+
+        <div class="grid" id="useCaseGrid">
+          <article class="card use-case" data-tags="healthcare">
+            <div class="thumb" style="background-image:url('https://www.news-medical.net/images/Article_Images/ImageForArticle_22572_16533781526443229.jpg')"></div>
+            <div class="card-body">
+              <h3>Healthcare: Triage & Insights</h3>
+              <p>Summarize patient notes, flag risks, and streamline intake workflows.</p>
+            </div>
+          </article>
+
+          <article class="card use-case" data-tags="finance">
+            <div class="thumb" style="background-image:url('https://st3.depositphotos.com/7677414/16700/i/450/depositphotos_167004986-stock-photo-fintech-icon-and-internet-of.jpg')"></div>
+            <div class="card-body">
+              <h3>Finance: Risk & Compliance</h3>
+              <p>Monitor transactions, classify anomalies, and generate compliant reporting.</p>
+            </div>
+          </article>
+
+          <article class="card use-case" data-tags="retail">
+            <div class="thumb gradient"></div>
+            <div class="card-body">
+              <h3>Retail: CX Automation</h3>
+              <p>Automate support, extract product insights, and boost personalization.</p>
+            </div>
+          </article>
+
+          <article class="card use-case" data-tags="manufacturing">
+            <div class="thumb gradient"></div>
+            <div class="card-body">
+              <h3>Manufacturing: Quality & Safety</h3>
+              <p>Detect defects, summarize logs, and predict maintenance windows.</p>
+            </div>
+          </article>
+
+          <article class="card use-case" data-tags="education">
+            <div class="thumb gradient"></div>
+            <div class="card-body">
+              <h3>Education: Adaptive Learning</h3>
+              <p>Create custom study guides, summarize curriculum, and assist grading.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="section" id="team">
+      <div class="container">
+        <div class="section-head">
+          <h2>Our Team</h2>
+          <p>Applied researchers, ML engineers, and product leaders shipping reliable AI.</p>
+        </div>
+        <div class="team">
+          <figure class="team-photo">
+            <img src="https://images.stockcake.com/public/0/6/1/061850aa-bc47-40b2-bf21-bf7533da7f6e_large/tech-team-working-stockcake.jpg" alt="NexusAI Labs team at work" />
+          </figure>
+          <ul class="team-highlights">
+            <li>Production-ready LLM pipelines with observability & evals</li>
+            <li>Privacy-first deployments across regulated environments</li>
+            <li>Human-centered design for trustworthy AI experiences</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section alt" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contact Us</h2>
+          <p>Have a project in mind? Let’s talk.</p>
+        </div>
+        <form class="contact" id="contactForm" novalidate>
+          <div class="row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@company.com" required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="company">Company</label>
+              <input id="company" name="company" type="text" placeholder="Company (optional)" />
+            </div>
+            <div class="field">
+              <label for="topic">Topic</label>
+              <select id="topic" name="topic" required>
+                <option value="">Choose a topic…</option>
+                <option value="pilot">Pilot / POC</option>
+                <option value="integration">Integration</option>
+                <option value="partnership">Partnership</option>
+                <option value="careers">Careers</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us about your goals…" required></textarea>
+          </div>
+          <div class="consent">
+            <input id="consent" name="consent" type="checkbox" required />
+            <label for="consent">I consent to be contacted about NexusAI services.</label>
+          </div>
+          <div class="actions">
+            <button type="submit" class="btn primary">Send Message</button>
+            <div id="contactError" class="form-error" aria-live="polite"></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> NexusAI Labs</span>
+        <a href="#top" class="to-top" aria-label="Back to top">↑</a>
+      </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot" id="chatbot" aria-live="polite">
+      <button class="chat-toggle" id="chatToggle" aria-label="Open chat">💬</button>
+      <div class="chat-window" id="chatWindow" aria-hidden="true">
+        <div class="chat-header">
+          <strong>NexusAI Assistant</strong>
+          <button class="chat-close" id="chatClose" aria-label="Close chat">×</button>
+        </div>
+        <div class="chat-body" id="chatBody">
+          <div class="msg bot">Hi! I’m here to help. Ask about features, pricing, or demos.</div>
+        </div>
+        <form class="chat-input" id="chatForm">
+          <input id="chatText" type="text" placeholder="Type your message…" aria-label="Message" required />
+          <button class="btn primary" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
+
