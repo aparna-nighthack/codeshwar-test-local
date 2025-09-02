@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phronetics — Hackathon</title>
+  <meta name="description" content="Phronetics Hackathon — Build fast, learn faster. Join us for a neon-fueled weekend of innovation with prizes, sponsors, and nonstop energy." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav__inner">
+      <a href="#hero" class="logo" aria-label="Phronetics home">
+        <span class="logo__mark">⚡</span> Phronetics
+      </a>
+      <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <nav class="nav__links" role="navigation">
+        <a href="#about">About</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#prizes">Prizes</a>
+        <a href="#sponsors">Sponsors</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#updates">Live Updates</a>
+        <a href="#register" class="btn btn--primary">Register</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="hero" class="hero">
+      <div class="hero__bg" role="img" aria-label="Participants collaborating"></div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1 class="glow">Phronetics Hackathon</h1>
+        <p class="tagline">Code together. Create momentum. Light up ideas.</p>
+        <div class="countdown" aria-live="polite">
+          <div class="unit"><span id="cd-days">00</span><small>Days</small></div>
+          <div class="unit"><span id="cd-hours">00</span><small>Hours</small></div>
+          <div class="unit"><span id="cd-mins">00</span><small>Minutes</small></div>
+          <div class="unit"><span id="cd-secs">00</span><small>Seconds</small></div>
+        </div>
+        <div class="hero__cta">
+          <a href="#register" class="btn btn--primary btn--glow">Join the Build</a>
+          <a href="#about" class="btn btn--ghost">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section section--padded reveal">
+      <div class="container">
+        <h2 class="section__title">About Phronetics</h2>
+        <p class="section__lead">
+          A 36-hour neon-fueled sprint to prototype bold ideas with a community of makers, designers, and engineers. Expect intense collaboration, mentorship, and a high‑energy vibe.
+        </p>
+        <ul class="highlights">
+          <li><strong>Tracks:</strong> AI/ML, Web, Mobile, IoT, Open Innovation</li>
+          <li><strong>Perks:</strong> Food, swag, mentors, chill zone</li>
+          <li><strong>Judging:</strong> Impact, polish, technical creativity, presentation</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Schedule Timeline -->
+    <section id="schedule" class="section section--padded section--alt reveal">
+      <div class="container">
+        <h2 class="section__title">Schedule</h2>
+        <div id="timeline" class="timeline" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Prizes -->
+    <section id="prizes" class="section section--padded reveal">
+      <div class="container">
+        <h2 class="section__title">Prizes</h2>
+        <div class="cards">
+          <div class="card neon-card" data-tilt>
+            <h3>Grand Prize</h3>
+            <p class="prize-amount">$5,000</p>
+            <p>Plus mentorship and accelerator interviews.</p>
+          </div>
+          <div class="card neon-card" data-tilt>
+            <h3>Runner Up</h3>
+            <p class="prize-amount">$2,000</p>
+            <p>Gear + spotlight on demo stage.</p>
+          </div>
+          <div class="card neon-card" data-tilt>
+            <h3>Best AI/ML</h3>
+            <p class="prize-amount">$1,000</p>
+            <p>NVIDIA credits and cloud time.</p>
+          </div>
+          <div class="card neon-card" data-tilt>
+            <h3>Best UX/UI</h3>
+            <p class="prize-amount">$1,000</p>
+            <p>Design tools + mentor session.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sponsors -->
+    <section id="sponsors" class="section section--padded section--alt reveal">
+      <div class="container">
+        <h2 class="section__title">Sponsors</h2>
+        <div class="sponsors">
+          <a class="sponsor neon-card" href="#" aria-label="Sponsor 1">NebulaCloud</a>
+          <a class="sponsor neon-card" href="#" aria-label="Sponsor 2">VectorLabs</a>
+          <a class="sponsor neon-card" href="#" aria-label="Sponsor 3">CircuitWorks</a>
+          <a class="sponsor neon-card" href="#" aria-label="Sponsor 4">DataPulse</a>
+          <a class="sponsor neon-card" href="#" aria-label="Sponsor 5">PhotonAI</a>
+          <a class="sponsor neon-card" href="#" aria-label="Sponsor 6">LumenTech</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="section section--padded reveal">
+      <div class="container">
+        <h2 class="section__title">Past Events</h2>
+        <div class="gallery">
+          <figure class="gallery__item">
+            <img src="https://images.squarespace-cdn.com/content/v1/63d40fe2cbd65e16cb8098b6/0917d0ee-e084-4e2c-9a46-7d19509d5447/Screen%2BShot%2B2023-08-28%2Bat%2B12.51.34%2BPM.png" alt="Hackathon team presenting" />
+            <figcaption>Team demoing their prototype</figcaption>
+          </figure>
+          <figure class="gallery__item">
+            <img src="https://contentstatic.techgig.com/photo/69114176.cms" alt="Participants hacking" />
+            <figcaption>Midnight hacking energy</figcaption>
+          </figure>
+          <figure class="gallery__item">
+            <img src="https://www.gsma.com/solutions-and-impact/gsma-open-gateway/wp-content/uploads/2025/03/Open-Gateway-Hackthon-Photo-1-1024x683.jpg" alt="Hackathon audience" />
+            <figcaption>Community and collaboration</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Updates -->
+    <section id="updates" class="section section--padded section--alt reveal">
+      <div class="container">
+        <h2 class="section__title">Live Updates</h2>
+        <ul id="updates-feed" class="updates" aria-live="polite"></ul>
+      </div>
+    </section>
+
+    <!-- Registration -->
+    <section id="register" class="section section--padded reveal">
+      <div class="container">
+        <h2 class="section__title">Register Your Team</h2>
+        <p class="section__lead">Spots are limited. Secure your place now.</p>
+        <form id="registration-form" class="form neon-form" autocomplete="on">
+          <div class="form__row">
+            <label for="teamName">Team Name</label>
+            <input id="teamName" name="teamName" type="text" placeholder="Enter your team name" required />
+          </div>
+          <div class="form__row">
+            <label for="track">Track</label>
+            <select id="track" name="track" required>
+              <option value="" disabled selected>Select a track</option>
+              <option>AI/ML</option>
+              <option>Web</option>
+              <option>Mobile</option>
+              <option>IoT</option>
+              <option>Open Innovation</option>
+            </select>
+          </div>
+          <div id="members" class="members">
+            <div class="form__row member">
+              <label>Member 1 Email</label>
+              <input type="email" name="memberEmails[]" placeholder="name@example.com" required />
+            </div>
+          </div>
+          <div class="form__actions">
+            <button type="button" id="addMember" class="btn btn--ghost">+ Add Member</button>
+            <button type="submit" class="btn btn--primary btn--glow">Submit Registration</button>
+          </div>
+          <p id="form-status" class="form__status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> Phronetics. Built with passion and neon.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
