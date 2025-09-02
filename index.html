@@ -249,6 +249,44 @@
     </div>
 
     <script src="script.js"></script>
+    
+    <!-- Auth Modal (Login / Signup) -->
+    <div class="auth-modal" id="authModal" aria-hidden="true" role="dialog" aria-label="Authentication">
+      <div class="auth-backdrop"></div>
+      <div class="auth-card" role="document">
+        <div class="auth-header">
+          <div class="brand">Nexus<span>AI</span> Access</div>
+          <div class="mode-toggle" role="tablist">
+            <button class="mode-btn active" data-mode="login" role="tab" aria-selected="true">Login</button>
+            <button class="mode-btn" data-mode="signup" role="tab">Sign Up</button>
+          </div>
+        </div>
+        <div class="auth-body">
+          <form id="loginForm" class="auth-form" autocomplete="off" novalidate>
+            <label for="loginUser">Username</label>
+            <input id="loginUser" class="auth-input" type="text" placeholder="e.g. aparna" required />
+            <label for="loginPass">Password</label>
+            <input id="loginPass" class="auth-input" type="password" placeholder="Your password" required />
+            <div class="auth-actions">
+              <button type="submit" class="auth-btn pulse">Enter</button>
+              <div class="auth-hint">Default: <code>aparna</code> / <code>password</code></div>
+            </div>
+            <div id="loginError" class="auth-error" aria-live="polite"></div>
+          </form>
+
+          <form id="signupForm" class="auth-form hidden" autocomplete="off" novalidate>
+            <label for="signupUser">New Username</label>
+            <input id="signupUser" class="auth-input" type="text" placeholder="Choose a username" required />
+            <label for="signupPass">New Password</label>
+            <input id="signupPass" class="auth-input" type="password" placeholder="Create a password" required />
+            <div class="auth-actions">
+              <button type="submit" class="auth-btn pulse">Create Account</button>
+              <div class="auth-hint">Accounts persist for this session only.</div>
+            </div>
+            <div id="signupError" class="auth-error" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
   </html>
-
