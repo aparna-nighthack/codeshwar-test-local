@@ -247,3 +247,165 @@ function botReply(input) {
   return 'Great question! A member of our team will follow up — feel free to leave details in the contact form.';
 }
 
+// =====================
+// Authentication (modal)
+// =====================
+(function authModule() {
+  function init() {
+    const authModal = document.getElementById('authModal');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+    const loginError = document.getElementById('loginError');
+    const signupError = document.getElementById('signupError');
+    const modeButtons = $$('.mode-btn');
+
+  // Render logged-in badge + logout
+  function ensureAuthBadge() {
+    const header = document.querySelector('.header-inner');
+    if (!header) return;
+    if (header.querySelector('.auth-badge')) return;
+    const badge = document.createElement('div');
+    badge.className = 'auth-badge';
+    badge.innerHTML = '<span id="whoami"></span> <button class="logout-btn" id="logoutBtn" title="End session">Logout</button>';
+    header.appendChild(badge);
+    const logoutBtn = badge.querySelector('#logoutBtn');
+    logoutBtn.addEventListener('click', () => {
+      sessionStorage.removeItem('authToken');
+      sessionStorage.removeItem('authUser');
+      // Keep user registry for the rest of the session
+      showAuthModal();
+      updateBadge();
+    });
+  }
+
+  function updateBadge() {
+    ensureAuthBadge();
+    const who = document.getElementById('whoami');
+    const user = sessionStorage.getItem('authUser');
+    const token = sessionStorage.getItem('authToken');
+    if (who) {
+      if (token && user) {
+        who.textContent = `Signed in as @${user}`;
+        who.parentElement.style.display = 'inline-flex';
+      } else {
+        who.textContent = '';
+        who.parentElement.style.display = 'none';
+      }
+    }
+  }
+
+  function getUsers() {
+    try {
+      const raw = sessionStorage.getItem('users');
+      if (!raw) return {};
+      return JSON.parse(raw);
+    } catch { return {}; }
+  }
+  function saveUsers(users) {
+    sessionStorage.setItem('users', JSON.stringify(users));
+  }
+
+  function token() {
+    return 'tok_' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+  }
+
+  function showAuthModal() {
+    authModal.classList.add('open');
+    authModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('locked');
+    // default to login view
+    setMode('login');
+    setTimeout(() => document.getElementById('loginUser')?.focus(), 0);
+  }
+  function hideAuthModal() {
+    authModal.classList.remove('open');
+    authModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('locked');
+  }
+
+  function setMode(mode) {
+    modeButtons.forEach(btn => {
+      const active = btn.dataset.mode === mode;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-selected', String(active));
+    });
+    if (mode === 'login') {
+      loginForm.classList.remove('hidden');
+      signupForm.classList.add('hidden');
+    } else {
+      signupForm.classList.remove('hidden');
+      loginForm.classList.add('hidden');
+    }
+  }
+  modeButtons.forEach(btn => btn.addEventListener('click', () => setMode(btn.dataset.mode)));
+
+  function requireAuthOnLoad() {
+    const token = sessionStorage.getItem('authToken');
+    const user = sessionStorage.getItem('authUser');
+    const users = getUsers();
+    const defaultOK = user === 'aparna' && token; // allow default without registry
+    const hasUser = users[user];
+    if (!token || !(defaultOK || hasUser)) {
+      showAuthModal();
+    } else {
+      hideAuthModal();
+    }
+    updateBadge();
+  }
+
+  function doLogin(username, password) {
+    loginError.textContent = '';
+    const users = getUsers();
+    const isDefault = username === 'aparna' && password === 'password';
+    const found = users[username];
+    const ok = isDefault || (found && found.password === password);
+    if (!ok) { loginError.textContent = 'Invalid username or password.'; return; }
+    sessionStorage.setItem('authUser', username);
+    sessionStorage.setItem('authToken', token());
+    sessionStorage.setItem('authAt', String(Date.now()));
+    hideAuthModal();
+    updateBadge();
+  }
+
+  function doSignup(username, password) {
+    signupError.textContent = '';
+    if (!username || !password) { signupError.textContent = 'Please enter a username and password.'; return; }
+    const users = getUsers();
+    if (users[username]) { signupError.textContent = 'Username is already taken.'; return; }
+    users[username] = { password, createdAt: Date.now() };
+    saveUsers(users);
+    // Auto-login after signup
+    sessionStorage.setItem('authUser', username);
+    sessionStorage.setItem('authToken', token());
+    sessionStorage.setItem('authAt', String(Date.now()));
+    hideAuthModal();
+    updateBadge();
+  }
+
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const u = document.getElementById('loginUser').value.trim();
+    const p = document.getElementById('loginPass').value;
+    doLogin(u, p);
+  });
+  signupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const u = document.getElementById('signupUser').value.trim();
+    const p = document.getElementById('signupPass').value;
+    doSignup(u, p);
+  });
+
+  // Block ESC-close; modal only hides on success
+  authModal.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') e.preventDefault();
+  });
+  // Enforce immediately after init
+  requireAuthOnLoad();
+  }
+  // Run after DOM ready to ensure modal exists
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
